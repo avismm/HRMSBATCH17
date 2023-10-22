@@ -20,7 +20,7 @@ import org.junit.runner.RunWith;
         //We use 'and' and 'or' keywords to execute based on conditions
         //no execution will occur because there is no scenario that has both the tags specified
         //tags ="@ali and @nafisa"
-        tags ="@ali or @regression"
+        tags ="@test1"
 )
 
 public class RunnerClass {

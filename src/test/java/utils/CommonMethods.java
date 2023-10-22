@@ -62,4 +62,8 @@ public class CommonMethods {
         getJSExecutor().executeScript("arguments[0].click();", element);
     }
 
+    public void closeBrowser(){
+        driver.quit();
+    }
+
 }
