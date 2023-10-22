@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class CommonMethods {
+public class CommonMethods extends PageInitializer {//inheriting the properties of one pageInitializer class into another class
     public static WebDriver driver;
 
     public static void openBrowserAndLaunchApplication(){
@@ -28,10 +28,13 @@ public class CommonMethods {
                 throw new RuntimeException(("Invalid browser name"));
         }
 
+        // maximize the window
+        driver.manage().window().maximize();
         // goto facebook.com
         driver.get(ConfigReader.getPropertyValue("url"));
-        //        maximize the window
-        driver.manage().window().maximize();
+
+        //initializing the web elements from the PageInitializer Class after loading the page
+        initializePageObjects();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Constants.IMPLICIT_WAIT));
     }
 

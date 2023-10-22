@@ -28,23 +28,23 @@ public class LoginSteps extends CommonMethods {
     @When("user enters username and password")
     public void user_enters_username_and_password() throws InterruptedException {
 //object of the login class to access all the elements
-        LoginPage lp =new LoginPage();
+        //LoginPage lp =new LoginPage();
         //WebElement usernameTextField=driver.findElement((By.xpath("//*[@id='txtUsername']")));
       //  usernameTextField.sendKeys("admin");
         //  Thread.sleep(2000);
-        sendText(lp.usernameTextField, ConfigReader.getPropertyValue("username"));
+        sendText(loginPage.usernameTextField, ConfigReader.getPropertyValue("username"));
       //  WebElement passwordField=driver.findElement((By.cssSelector("input#txtPassword")));
       //  passwordField.sendKeys("Hum@nhrm123");
-        sendText(lp.passwordField, ConfigReader.getPropertyValue("password"));
+        sendText(loginPage.passwordField, ConfigReader.getPropertyValue("password"));
         //Thread.sleep(2000);
         //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
 
     @When("user clicks on login button")
     public void user_clicks_on_login_button() throws InterruptedException {
-        LoginPage lp =new LoginPage();
+        //LoginPage lp =new LoginPage();
        // WebElement loginBtn=driver.findElement((By.xpath("//*[@id='btnLogin']")));
-       click(lp.loginBtn);
+       click(loginPage.loginBtn);
        // Thread.sleep(2000);
        // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }

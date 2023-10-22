@@ -15,7 +15,7 @@ Feature: add employee scenario
     #Then user is successfully logged in
     #When user clicks on PIM option
     #And user clicks on add employee option
-    * user enters firstName, middleName and lastName
+    * user enters firstName middleName and lastName
     * user clicks on save button
     * employee added successfully
     #Then user closes the browser
@@ -41,4 +41,16 @@ Feature: add employee scenario
       | Avis      | Sam          | Muhwerane  |
       | James      | Kenan         | Cofi   |
       | Adrews       | Anna         | Kotler      |
+
+    @excel
+    Scenario: Adding multiple employees from excel files
+      When user adds multiple employees from excel using "Sheet1" and verify them
+
+      @datatable
+      Scenario: adding multiple employees from data table
+        When user adds multiple employees from data table
+          | firstName   | middleName    | lastName    |
+          | Avis        | Sam           | Muhwerane   |
+          | James       | Kenan         | Cofi        |
+          | Adrews      | Anna          | Kotler      |
 

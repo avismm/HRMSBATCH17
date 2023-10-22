@@ -6,7 +6,7 @@ Feature: Employee search
     And  user clicks on login button
     Then user is successfully logged in
     When user clicks on PIM option
-    And user clicks on Employee List Option
+    And user clicks on Employee List option
 
   @sprint2 @ahmad @regression @test
   Scenario: Search an employee by Id
