@@ -50,6 +50,7 @@ public class LoginSteps extends CommonMethods {
     }
     @Then("user is successfully logged in")
     public void user_is_successfully_logged_in() {
+        //System.out.println(1/0);
         System.out.println("This test passed");
     }
 }
