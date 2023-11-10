@@ -2,6 +2,7 @@ package Steps;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import utils.CommonMethods;
@@ -38,6 +39,7 @@ public class AddEmployeeSteps extends CommonMethods {
     @Then("employee added successfully")
     public void employee_added_successfully() {
         System.out.println("Employee added");
+       // System.out.println(1/0);
     }
 
     @Then("user closes the browser")
@@ -65,6 +67,7 @@ public class AddEmployeeSteps extends CommonMethods {
         sendText(addEmployeePage.firstNameLoc, firstN);
         sendText(addEmployeePage.middleNameLoc, middleN);
         sendText(addEmployeePage.lastNameLoc, lastN);
+
     }
 
     @When("user adds multiple employees from excel using {string} and verify them")
@@ -72,7 +75,6 @@ public class AddEmployeeSteps extends CommonMethods {
             (String sheetName) throws InterruptedException {
         List<Map<String, String>> newEmployees =
                 ExcelReader.read(sheetName, Constants.TESTDATA_FILEPATH);
-
         //from the list of maps, we need one map at one point of time
         // this iterator will give me one map to add one employee at a time
         Iterator<Map<String, String>> itr = newEmployees.iterator();
@@ -91,8 +93,37 @@ public class AddEmployeeSteps extends CommonMethods {
             sendText(addEmployeePage.usernameEmp, employeeMap.get("Username"));
             sendText(addEmployeePage.passwordEmp, employeeMap.get("Password"));
             sendText(addEmployeePage.confirmPassword, employeeMap.get("confirmPassword"));
+
+            //we are storing the emp id from the locator before we save the new employee
+            String empIdValue =
+                    addEmployeePage.employeeIdLocator.getAttribute("value");
             click(addEmployeePage.saveBtn);
             Thread.sleep(2000);
+
+            //verification of employee still pending
+            click(dashboardPage.empListButton);
+            //we need to search the employee by the stored employee id
+            sendText(employeeSearchPage.empSearchIdField, empIdValue);
+            click(employeeSearchPage.searchBtn);
+
+            //after searching the employee, it returns the info in format
+            //empid firstname middleName lastname in that format
+            List<WebElement> rowData =
+                    driver.findElements(By.xpath("//table[@id='resultTable']/tbody/tr"));
+
+            for (int i=0; i<rowData.size(); i++){
+                //it will give me the data from all the cell of the row
+                String rowText = rowData.get(i).getText();
+                System.out.println(rowText);
+                //it is we are getting from Excel to compare with web table data
+                String expectedDataFromExcel = empIdValue + " " + employeeMap.get("firstName")
+                        + " " + employeeMap.get("middleName") + " "
+                        + employeeMap.get("lastName");
+                System.out.println(expectedDataFromExcel);
+                Assert.assertEquals(expectedDataFromExcel, rowText);
+
+            }
+
             //because we want to add many employees
             click(dashboardPage.addEmployeeButton);
             Thread.sleep(2000);

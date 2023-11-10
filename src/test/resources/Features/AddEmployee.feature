@@ -7,7 +7,7 @@ Feature: add employee scenario
     * user clicks on PIM option
     * user clicks on add employee option
 
-  @addemp @test
+  @addemp @test @test12
   Scenario: Adding one employee in the hrms system
     #Given user has navigated to HRMS application
     #When user enters username and password

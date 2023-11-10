@@ -4,6 +4,7 @@ import Pages.LoginPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -52,5 +53,10 @@ public class LoginSteps extends CommonMethods {
     public void user_is_successfully_logged_in() {
         //System.out.println(1/0);
         System.out.println("This test passed");
+        //assertion to check if element exists
+        //the moment assertions finds an error, it forces stop of the execution and captures the screenshot
+        //assertTrue is boolean condition to check if it returns true or false
+        Assert.assertTrue(dashboardPage.welcomeAdminLocator.isDisplayed());
+        //Assert.assertEquals();
     }
 }

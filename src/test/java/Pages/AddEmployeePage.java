@@ -32,6 +32,9 @@ public class AddEmployeePage extends CommonMethods {
     @FindBy(id="btnSave")
     public WebElement saveBtn;
 
+    @FindBy(id="employeeId")
+    public WebElement employeeIdLocator;
+
     public AddEmployeePage(){
         //we will call the page factory class to initialize the elements
         //because when the object is created, the constructor will be called which will initialize the elements

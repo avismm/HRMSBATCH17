@@ -14,6 +14,9 @@ public class DashboardPage extends CommonMethods {
     @FindBy(id="menu_pim_addEmployee")
     public WebElement addEmployeeButton;
 
+    @FindBy(id="welcome")
+    public WebElement welcomeAdminLocator;
+
     public DashboardPage(){
         //we will call the page factory class to initialize the elements
         //because when the object is created, the constructor will be called which will initialize the elements

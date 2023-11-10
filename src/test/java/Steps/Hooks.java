@@ -13,6 +13,8 @@ public class Hooks extends CommonMethods {
     @After
     //this will always execute at the end irrespective of the result
     public void end(Scenario scenario){
+
+        //this array will hold the screenshot data
         byte[] pic;
         //here, we take the screenshot before closing the browser
         //Scenario class in cucumber will give us the info of the execution. It holds the complete info of the execution
