@@ -54,3 +54,10 @@ Feature: add employee scenario
           | James       | Kenan         | Cofi        |
           | Adrews      | Anna          | Kotler      |
 
+  @db
+  Scenario: Add Employee from Frontend and verify from DB
+    When user enters "fahim" and "Naughty" and "Hedaiy"
+    And user clicks on save button
+    Then employee added successfully
+    And fetch employee info from backend
+    Then verify employee info is properly stored in db
