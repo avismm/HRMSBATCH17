@@ -3,6 +3,7 @@ package utils;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -22,7 +23,9 @@ public class CommonMethods extends PageInitializer {//inheriting the properties 
 
         switch (ConfigReader.getPropertyValue("browser")){
             case "chrome":
-                driver=new ChromeDriver();
+                ChromeOptions cp=new ChromeOptions();
+                cp.setHeadless(true);
+                driver=new ChromeDriver(cp);
                 break;
             case "firefox":
                 driver=new FirefoxDriver();
